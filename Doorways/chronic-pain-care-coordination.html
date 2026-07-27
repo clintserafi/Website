@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chronic Pain Care Coordination | Performance Collective</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --ink:#0E1614;
+    --charcoal:#152220;
+    --charcoal-2:#1C2E2B;
+    --teal:#1E5C73;
+    --teal-bright:#3FA0BD;
+    --gold:#C9A227;
+    --gold-bright:#E8C468;
+    --parchment:#F2ECDC;
+    --parchment-dim:#CFC9B8;
+    --muted:#8FA6A2;
+    --line:rgba(242,236,220,0.12);
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--parchment);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    color:var(--parchment);
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--gold-bright);
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px;}
+  a{color:inherit; text-decoration:none;}
+  img,svg{display:block; max-width:100%;}
+
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(14,22,20,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:76px;
+  }
+  .brand{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.85rem;
+    letter-spacing:0.06em;
+    display:flex; flex-direction:column; line-height:1.25;
+  }
+  .brand strong{color:var(--parchment); font-size:0.95rem;}
+  .brand span{color:var(--gold-bright); font-size:0.68rem; letter-spacing:0.14em;}
+  .nav-cta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.04em;
+    border:1px solid var(--gold);
+    color:var(--gold-bright);
+    padding:10px 18px;
+    border-radius:2px;
+    transition:background .2s ease, color .2s ease;
+  }
+  .nav-cta:hover{background:var(--gold); color:var(--ink);}
+
+  .hero{
+    padding:96px 0 40px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .wrap{position:relative; z-index:2;}
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 4.6vw, 3.6rem);
+    line-height:1.08;
+    margin:18px 0 22px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--gold-bright);
+  }
+  .hero p.lead{
+    font-size:1.08rem;
+    color:var(--parchment-dim);
+    max-width:46ch;
+    margin-bottom:32px;
+  }
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:40px;}
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.82rem;
+    letter-spacing:0.03em;
+    padding:14px 24px;
+    border-radius:2px;
+    display:inline-block;
+    transition:transform .15s ease, background .2s ease, color .2s ease;
+  }
+  .btn-primary{background:var(--gold); color:var(--ink); font-weight:600;}
+  .btn-primary:hover{background:var(--gold-bright); transform:translateY(-1px);}
+  .btn-ghost{border:1px solid var(--teal-bright); color:var(--teal-bright);}
+  .btn-ghost:hover{background:var(--teal-bright); color:var(--ink);}
+
+  .coord-strip{
+    display:flex; gap:28px; flex-wrap:wrap;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.74rem;
+    color:var(--muted);
+    border-top:1px solid var(--line);
+    padding-top:20px;
+  }
+  .coord-strip strong{display:block; color:var(--gold-bright); font-size:1.05rem; font-family:'Fraunces', serif;}
+
+  .signature{ width:100%; height:340px; }
+  .signature path{
+    fill:none; stroke:var(--gold); stroke-width:2;
+    stroke-linecap:round; stroke-linejoin:round;
+    stroke-dasharray:1400; stroke-dashoffset:1400;
+    animation:draw 2.6s cubic-bezier(.22,.61,.36,1) forwards .3s;
+  }
+  .signature path.pulse-glow{ stroke:var(--teal-bright); opacity:0.5; filter:blur(2px); }
+  .signature circle{ fill:var(--gold-bright); opacity:0; animation:blip 2.6s ease forwards 2.1s; }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  @keyframes blip{ 0%{opacity:0; r:0;} 40%{opacity:1; r:5;} 100%{opacity:1; r:3.5;} }
+  @media (prefers-reduced-motion: reduce){
+    .signature path{ animation:none; stroke-dashoffset:0; }
+    .signature circle{ animation:none; opacity:1; r:3.5; }
+  }
+
+  .hr-pulse{ width:100%; max-width:var(--maxw); margin:0 auto; height:1px; background:var(--line); position:relative; }
+
+  section{padding:88px 0;}
+  .section-head{max-width:640px; margin-bottom:52px;}
+  .section-head h2{font-size:clamp(1.8rem, 3vw, 2.4rem); margin-top:12px;}
+  .section-head p{color:var(--parchment-dim); margin-top:14px; font-size:1.02rem;}
+
+  .problem{background:var(--charcoal);}
+  .problem-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+  .problem-cell{ background:var(--charcoal); padding:32px 28px; }
+  .problem-cell .num{ font-family:'IBM Plex Mono', monospace; color:var(--gold); font-size:0.78rem; letter-spacing:0.1em; }
+  .problem-cell h3{font-size:1.15rem; margin:14px 0 10px;}
+  .problem-cell p{color:var(--parchment-dim); font-size:0.95rem;}
+
+  .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:36px; counter-reset:step; }
+  .step{position:relative; padding-left:2px;}
+  .step .step-num{
+    font-family:'Fraunces', serif; font-size:2.6rem; color:transparent;
+    -webkit-text-stroke:1px var(--gold); line-height:1; margin-bottom:18px;
+  }
+  .step h3{font-size:1.2rem; margin-bottom:10px;}
+  .step p{color:var(--parchment-dim); font-size:0.96rem;}
+
+  .pricing{background:var(--charcoal-2);}
+  .price-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .price-card{
+    border:1px solid var(--line); background:var(--ink); padding:36px 28px;
+    display:flex; flex-direction:column; position:relative;
+  }
+  .price-card.featured{ border-color:var(--gold); background:linear-gradient(180deg, rgba(201,162,39,0.07), rgba(14,22,20,0)); }
+  .price-card .tag{
+    position:absolute; top:0; right:0; font-family:'IBM Plex Mono', monospace;
+    font-size:0.66rem; letter-spacing:0.1em; background:var(--gold); color:var(--ink); padding:6px 12px;
+  }
+  .price-card h3{font-size:1.2rem; margin:10px 0 6px;}
+  .price-card .price{ font-family:'Fraunces', serif; font-size:2.2rem; color:var(--gold-bright); margin:12px 0 4px; }
+  .price-card .price span{font-size:0.95rem; color:var(--muted); font-family:'Inter',sans-serif;}
+  .price-card .sub{color:var(--parchment-dim); font-size:0.9rem; margin-bottom:22px;}
+  .price-card ul{list-style:none; margin-bottom:24px; flex-grow:1;}
+  .price-card li{ padding:10px 0; border-top:1px solid var(--line); font-size:0.88rem; color:var(--parchment-dim); display:flex; gap:10px; }
+  .price-card li::before{ content:"\2014"; color:var(--teal-bright); flex-shrink:0; }
+  .price-card.featured li::before{color:var(--gold);}
+  .price-card .allocations{
+    background:rgba(201,162,39,0.06); border:1px solid var(--line); padding:14px 16px; margin-bottom:22px; font-size:0.82rem; color:var(--parchment-dim);
+  }
+  .price-card .allocations .a-row{ display:flex; justify-content:space-between; padding:5px 0; border-top:1px solid var(--line); }
+  .price-card .allocations .a-row:first-child{border-top:none;}
+  .price-card .allocations .a-label{color:var(--parchment-dim);}
+  .price-card .allocations .a-val{color:var(--gold-bright); font-family:'IBM Plex Mono', monospace; font-size:0.78rem;}
+  .price-card .note{font-size:0.78rem; color:var(--muted); font-style:italic; margin-bottom:18px;}
+
+  .story{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px; align-items:center; }
+  .story-card{ background:var(--charcoal); border-left:3px solid var(--gold); padding:36px 34px; }
+  .story-card p.quote{ font-family:'Fraunces', serif; font-style:italic; font-size:1.28rem; line-height:1.5; color:var(--parchment); margin-bottom:20px; }
+  .story-card p.quote.pending{ color:var(--muted); font-size:1.05rem; }
+  .story-card .attr{ font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--gold-bright); }
+  .story-facts{display:flex; flex-direction:column; gap:22px;}
+  .fact{border-top:1px solid var(--line); padding-top:16px;}
+  .fact strong{display:block; font-family:'IBM Plex Mono', monospace; color:var(--teal-bright); font-size:0.78rem; letter-spacing:0.06em; margin-bottom:6px;}
+  .fact span{color:var(--parchment-dim); font-size:0.94rem;}
+
+  .story-grid{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .mini-quote{ background:var(--charcoal); border-left:3px solid var(--gold); padding:26px 26px; }
+  .mini-quote p.quote{ font-family:'Fraunces', serif; font-style:italic; color:var(--muted); font-size:1rem; line-height:1.5; margin-bottom:14px; }
+  .mini-quote .attr{ font-family:'IBM Plex Mono', monospace; font-size:0.74rem; color:var(--gold-bright); }
+
+  .oversight{ background:var(--teal); color:var(--ink); padding:44px 0; }
+  .oversight .wrap{ display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; }
+  .oversight p{ font-family:'Fraunces', serif; font-size:1.15rem; max-width:60ch; color:#0E1614; }
+  .oversight .badge{ font-family:'IBM Plex Mono', monospace; font-size:0.72rem; letter-spacing:0.08em; background:var(--ink); color:var(--gold-bright); padding:10px 16px; white-space:nowrap; }
+
+  .faq-list{max-width:760px;}
+  details{ border-bottom:1px solid var(--line); padding:22px 0; }
+  summary{ cursor:pointer; font-family:'Fraunces', serif; font-size:1.08rem; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:20px; }
+  summary::-webkit-details-marker{display:none;}
+  summary::after{ content:"+"; font-family:'IBM Plex Mono', monospace; color:var(--gold); font-size:1.2rem; flex-shrink:0; }
+  details[open] summary::after{content:"\2013";}
+  details p{color:var(--parchment-dim); margin-top:14px; font-size:0.96rem; max-width:62ch;}
+
+  .final-cta{ text-align:center; padding:110px 0 100px; background:radial-gradient(ellipse at center, rgba(201,162,39,0.08), transparent 65%); }
+  .final-cta h2{font-size:clamp(2rem,4vw,2.8rem); margin:16px auto 20px; max-width:22ch;}
+  .final-cta p{color:var(--parchment-dim); max-width:50ch; margin:0 auto 34px;}
+  .final-cta .cta-row{justify-content:center;}
+
+  footer{ border-top:1px solid var(--line); padding:36px 0; }
+  footer .wrap{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:var(--muted); }
+
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  @media (max-width:880px){
+    .hero-grid{grid-template-columns:1fr;}
+    .problem-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr; gap:44px;}
+    .price-grid{grid-template-columns:1fr;}
+    .story{grid-template-columns:1fr;}
+    .story-grid{grid-template-columns:1fr;}
+    .oversight .wrap{flex-direction:column; align-items:flex-start;}
+  }
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><strong>PERFORMANCE COLLECTIVE</strong><span>CARE COORDINATION FOR CHRONIC & COMPLEX PAIN</span></div>
+    <a class="nav-cta" href="#pricing">View membership tiers</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Someone to Connect the Dots</div>
+      <h1>Your providers don&rsquo;t talk to each other. <em>I do.</em></h1>
+      <p class="lead">PCP, surgeon, rheumatologist, cardiologist, chiropractor &mdash; when did any two of them actually talk to each other about you? After failed surgery, failed PT, or a diagnosis like CRPS that doesn't fit in one specialty, what you need isn't another silo. It's someone coordinating the whole picture.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#pricing">Start Tier 1 &mdash; $49/mo</a>
+        <a class="btn btn-ghost" href="#pricing">See coordination plans</a>
+      </div>
+      <div class="coord-strip">
+        <div><strong>&lt;24 hrs</strong>typical response time to a message</div>
+        <div><strong>1</strong>guide who knows your full history and goal</div>
+        <div><strong>0</strong>generic templated programs</div>
+      </div>
+    </div>
+    <div>
+      <svg class="signature" viewBox="0 0 520 340" xmlns="http://www.w3.org/2000/svg">
+        <path class="pulse-glow" d="M0 230 L40 230 L70 180 L100 250 L130 150 L160 230 L200 230 L225 190 L245 260 L265 130 L285 230 L340 232 L350 232 L360 150 L368 290 L376 232 L390 232 L410 200 L430 232 L520 232" />
+        <path d="M0 230 L40 230 L70 180 L100 250 L130 150 L160 230 L200 230 L225 190 L245 260 L265 130 L285 230 L340 232 L350 232 L360 150 L368 290 L376 232 L390 232 L410 200 L430 232 L520 232" />
+        <circle cx="520" cy="232" r="3.5" />
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="hr-pulse"></div>
+
+<section class="problem">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">The Reality</div>
+      <h2>Every specialist treats their piece. No one explains how the pieces connect.</h2>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-cell reveal">
+        <div class="num">01</div>
+        <h3>Every specialist, zero cross-talk.</h3>
+        <p>Each provider treats their piece. No one's explaining how the pieces connect.</p>
+      </div>
+      <div class="problem-cell reveal">
+        <div class="num">02</div>
+        <h3>Failed surgery, failed &ldquo;traditional&rdquo; PT.</h3>
+        <p>When the standard playbook didn't work, most systems just repeat it, louder.</p>
+      </div>
+      <div class="problem-cell reveal">
+        <div class="num">03</div>
+        <h3>No one explaining the &ldquo;why.&rdquo;</h3>
+        <p>You leave every appointment with a new prescription and the same unanswered question.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">How It Works</div>
+      <h2>Coordination, not another treatment attempt.</h2>
+      <p>Not a replacement for your specialists &mdash; the person making sure they add up to one coherent plan.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <h3>Bring the whole picture</h3>
+        <p>Every provider, every diagnosis, every treatment tried &mdash; so nothing gets missed twice.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <h3>Get the dots connected</h3>
+        <p>Guidance on how your conditions and treatments actually relate, and what's worth pursuing next.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <h3>Stay coordinated going forward</h3>
+        <p>An ongoing point of contact so your care team stops operating in silos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Membership Tiers</div>
+      <h2>Three ways to have someone coordinating your care.</h2>
+    </div>
+    <div class="price-grid">
+      <div class="price-card reveal">
+        
+        <h3>Tier 1 &middot; Health Liaison On-Retainer</h3>
+        <div class="price">$49<span>/month</span></div>
+        <p class="sub">A go-to for the days when a new symptom shows up and you don't know which of your five providers to call first.</p>
+        
+        
+        <ul>
+          <li>Answers when you need them, not on hold</li>
+          <li>Screening for new or worsening symptoms</li>
+          <li>Guidance on which provider actually needs to know</li>
+          <li>A real follow-up plan, not a one-time answer</li>
+        </ul>
+        <a class="btn btn-ghost" href="#">Start Tier 1</a>
+      </div>
+      <div class="price-card featured reveal">
+        <div class="tag">Most Popular</div>
+        <h3>Tier 2 &middot; Coaching for Performance</h3>
+        <div class="price">$199<span>/month</span></div>
+        <p class="sub">Active coordination across your care team, with a structured plan for what to pursue next and what to let go of.</p>
+        
+        
+        <ul>
+          <li>Ongoing synthesis across your existing providers and records</li>
+          <li>A structured plan for next steps, revisited regularly</li>
+          <li>Progress check-ins every 4 weeks</li>
+          <li>Everything in Tier 1</li>
+        </ul>
+        <a class="btn btn-primary" href="#">Start Tier 2</a>
+      </div>
+      <div class="price-card reveal">
+        
+        <h3>Tier 3 &middot; Concierge Health Management</h3>
+        <div class="price">Custom<span>/ variable</span></div>
+        <p class="sub">Full-service coordination, including access to our physician network for metabolic, hormone, and pain-management-adjacent support, all connected.</p>
+        <div class="allocations">
+          <div class="a-row"><span class="a-label">Supplements</span><span class="a-val">&#126;$300/mo</span></div>
+          <div class="a-row"><span class="a-label">Peptides / Prescriptions</span><span class="a-val">&#126;$500/mo</span></div>
+          <div class="a-row"><span class="a-label">Training &amp; Conditioning</span><span class="a-val">&#126;$300/mo</span></div>
+          <div class="a-row"><span class="a-label">Sleep / Mental Health Resources</span><span class="a-val">&#126;$250/mo</span></div>
+        </div>
+        <p class="note">Built on the Tier 2 base. Final price depends on which services, frequency, and physician-managed support you select &mdash; example allocations shown above, not a fixed total.</p>
+        <ul>
+          <li>Everything in Tier 2</li>
+          <li>Access to our physician network for metabolic and hormone support</li>
+          <li>More frequent check-ins</li>
+          <li>Priority coordination around appointments and specialist visits</li>
+        </ul>
+        <a class="btn btn-ghost" href="#">Request a Tier 3 Quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="wrap" style="display:grid; grid-template-columns:1fr; gap:0; align-items:center; max-width:760px;">
+    <div class="story-card reveal">
+      <p class="quote pending">&#8220;Quote pending &mdash; reserved for Andrea's story.&#8221;</p>
+      <div class="attr">&mdash; Andrea, Chronic Pain Care Coordination member</div>
+    </div>
+  </div>
+</section>
+
+<section class="oversight">
+  <div class="wrap">
+    <p>Every plan is guided by a licensed clinician's background, with access to our physician network for metabolic, hormone, and peptide support when it's needed &mdash; so &quot;virtual&quot; never means &quot;unsupervised.&quot;</p>
+    <div class="badge">GUIDED &middot; COORDINATED &middot; PHYSICIAN NETWORK ACCESS</div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Questions</div>
+      <h2>Before you sign on</h2>
+    </div>
+    <div class="faq-list">
+      <details class="reveal">
+        <summary>I've already tried PT and surgery &mdash; what's different here?</summary>
+        <p>This isn't another treatment attempt. It's coordination across everything you've already tried, so the next step actually makes sense given the whole picture.</p>
+      </details>
+      <details class="reveal">
+        <summary>Can you get my providers to actually talk to each other?</summary>
+        <p>I can't compel your specialists to collaborate directly, but I can help you understand how their input connects, ask sharper questions at your next appointment, and build a plan that accounts for the whole picture instead of one piece of it.</p>
+      </details>
+      <details class="reveal">
+        <summary>Is this specific to CRPS?</summary>
+        <p>It's built for chronic, complex, or multi-specialty pain situations generally &mdash; CRPS is one example, not the only one.</p>
+      </details>
+      <details class="reveal">
+        <summary>What if I only need occasional guidance?</summary>
+        <p>That's Tier 1 &mdash; a standing relationship without committing to a full structured plan.</p>
+      </details>
+      <details class="reveal">
+        <summary>Does this include hormone or metabolic support?</summary>
+        <p>That level of physician-managed support lives in Tier 3, coordinated through our physician network.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <div class="eyebrow reveal">Ready When You Are</div>
+    <h2 class="reveal">You&rsquo;ve tried the silos. Let&rsquo;s connect the dots.</h2>
+    <p class="reveal">Start with Tier 1, build toward active coordination when you're ready.</p>
+    <div class="cta-row reveal">
+      <a class="btn btn-primary" href="#pricing">Start Tier 1 &mdash; $49/mo</a>
+      <a class="btn btn-ghost" href="#pricing">Compare tiers</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>PERFORMANCE COLLECTIVE &middot; CHRONIC PAIN CARE COORDINATION</span>
+    <span>performancecollective.co &middot; Life Over 40, Reimagined.</span>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+.DS_Store
+
+# Raw brand-asset dump: source files, not needed for the deployed site.
+# Only the specific files copied out (images/logo-horizontal.png, images/favicon.svg) are tracked.
+images/Logo PERFORMANCE COLLECTIVE/
+images/Performance Collective Branding/
