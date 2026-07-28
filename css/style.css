@@ -88,7 +88,7 @@ a {
 }
 
 .nav-logo img {
-  height: 42px;
+  height: 64px;
   width: auto;
 }
 
@@ -260,9 +260,13 @@ a {
 .carousel-slide {
   position: relative;
   min-height: 340px;
-  display: grid;
+  display: flex;
   align-items: center;
-  justify-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(180deg, rgba(14,22,20,0.08), rgba(14,22,20,0.28));
+  border: 1px dashed rgba(242,236,220,0.16);
 }
 
 .carousel-slide img {
@@ -357,6 +361,10 @@ a {
   text-align: center;
 }
 
+.services-intro {
+  font-size: 1.18rem;
+}
+
 .section-header h2 {
   font-size: clamp(1.8rem, 3vw, 2.4rem);
   margin: 0 0 14px;
@@ -366,6 +374,10 @@ a {
   color: var(--parchment-dim);
   font-size: 1.02rem;
   margin: 0;
+}
+
+.services-intro {
+  font-size: 1.12rem;
 }
 
 /* ===== Cards / grid ===== */
