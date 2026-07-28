@@ -34,6 +34,8 @@
         <div class="section-header">
           <h2>Get in Touch</h2>
           <p>Tell us a bit about what you're looking for and we'll follow up within one business day.</p>
+          <p>To route submissions to <strong>hello@performancecollective.co</strong>, create a Formspree form, then replace <code>YOUR_FORM_ID</code> below with your live form ID.</p>
+          <p>Use Formspree’s dashboard to send notification emails to <strong>hello@performancecollective.co</strong> and connect the form to Google Sheets or Zapier for automated follow-up workflow.</p>
         </div>
 
         <!--
@@ -55,14 +57,33 @@
             <input type="tel" id="phone" name="phone" />
           </div>
           <div class="form-group">
+            <label for="referral">How did you hear about us?</label>
+            <select id="referral" name="referral" required>
+              <option value="">Select one</option>
+              <option value="referral">Referral or coach</option>
+              <option value="search">Search engine</option>
+              <option value="social">Social media</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
             <label for="message">How can we help?</label>
             <textarea id="message" name="message" rows="6" required></textarea>
           </div>
+          <input type="hidden" name="_subject" value="New Performance Collective inquiry" />
+          <input type="hidden" name="_cc" value="hello@performancecollective.co" />
+          <input type="hidden" name="_next" value="thank-you.html" />
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
           <button type="submit" class="btn btn-primary">Send Message</button>
           <p id="form-status" class="form-status" role="status"></p>
           <p class="form-note">
-            Submissions are delivered by Formspree directly to our inbox — no data is stored on this site.
+            Submissions are delivered by Formspree directly to our inbox — no data is stored on this site. If you prefer, email us at <a href="mailto:hello@performancecollective.co">hello@performancecollective.co</a>.
+          </p>
+          <p class="form-note" style="margin-top: 8px;">
+            To save this form to Google Sheets and trigger your email sequence, connect Formspree to Google Sheets or Zapier, then point the automation at your shared sheet.
+          </p>
+          <p class="form-note" style="margin-top: 8px;">
+            By submitting, you agree to our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms of Service</a>.
           </p>
         </form>
       </div>
@@ -72,7 +93,11 @@
   <footer class="site-footer">
     <div class="container">
       <span>&copy; 2026 Performance Collective. All rights reserved.</span>
-      <span><a href="contact.html">Contact us</a></span>
+      <span>
+        <a href="mailto:hello@performancecollective.co">hello@performancecollective.co</a>
+        &middot; <a href="privacy.html">Privacy Policy</a>
+        &middot; <a href="terms.html">Terms of Service</a>
+      </span>
     </div>
   </footer>
 

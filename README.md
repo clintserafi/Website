@@ -14,8 +14,9 @@ images/         Drop real photos here, then swap the .img-placeholder divs for <
 ```
 
 ## To-do before launch
-- [ ] Sign up at https://formspree.io (or https://usebasin.com), create a form, and replace
-      `YOUR_FORM_ID` in `contact.html`'s `<form action="...">` with your real form ID.
+- [ ] Sign up at https://formspree.io, create a form, and replace `YOUR_FORM_ID` in `contact.html`'s `<form action="...">` with your real form ID.
+- [ ] In the Formspree form settings, configure email notifications to send to `hello@performancecollective.co`.
+- [ ] Connect the form to Google Sheets or Zapier to capture submissions in a sheet and trigger an email sequence.
 - [ ] Replace `.img-placeholder` divs with real `<img src="images/..." alt="...">` tags.
 - [ ] Swap placeholder About/Services copy for final content.
 - [ ] Update the copyright year/footer if needed.
