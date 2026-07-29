@@ -552,6 +552,69 @@ a {
   min-height: 0;
 }
 
+/* ===== Team cards ===== */
+.team-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.team-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.team-photo {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  border: 1px solid var(--line);
+  background: var(--charcoal);
+}
+
+.team-bio {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+  color: var(--parchment-dim);
+  font-size: 0.92rem;
+  max-width: 36ch;
+  cursor: pointer;
+}
+
+.team-bio:hover,
+.team-bio:focus,
+.team-bio.is-open {
+  color: var(--parchment);
+}
+
+.team-bio p {
+  margin: 0;
+}
+
+.team-bio:not(.is-open) {
+  max-height: 2.6rem;
+  overflow: hidden;
+}
+
+.team-bio.is-open {
+  max-height: 200px;
+}
+
+@media (max-width: 760px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team-photo {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+}
+
 /* ===== CTA band ===== */
 .cta-band {
   text-align: center;

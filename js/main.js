@@ -40,6 +40,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  document.querySelectorAll(".team-bio").forEach((bio) => {
+    bio.addEventListener("click", () => {
+      bio.classList.toggle("is-open");
+    });
+
+    bio.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        bio.classList.toggle("is-open");
+      }
+    });
+  });
+
   const carousel = document.querySelector(".carousel");
   if (carousel) {
     const track = carousel.querySelector(".carousel-track");
