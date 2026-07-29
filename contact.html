@@ -39,7 +39,7 @@
           <p>Use Formspree’s dashboard to confirm delivery to <strong>hello@performancecollective.co</strong> and connect the form to Google Sheets or Zapier for automated follow-up workflow.</p>
         </div>
 
-        <form id="contact-form" class="form" action="https://formspree.io/f/mbdnwqea" method="POST">
+        <form id="contact-form" class="form" action="https://formspree.io/f/mbdnwqea" method="POST" accept-charset="UTF-8">
           <div class="form-group">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" required />
@@ -67,7 +67,7 @@
             <textarea id="message" name="message" rows="6" required></textarea>
           </div>
           <input type="hidden" name="_subject" value="New Performance Collective inquiry" />
-          <input type="hidden" name="_next" value="thank-you.html" />
+          <input type="hidden" name="_next" value="https://www.performancecollective.co/thank-you.html" />
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
           <button type="submit" class="btn btn-primary">Send Message</button>
           <p id="form-status" class="form-status" role="status"></p>
