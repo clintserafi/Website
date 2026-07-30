@@ -833,3 +833,14 @@ a {
   flex-wrap: wrap;
   gap: 12px;
 }
+
+.medical-disclaimer {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.68rem;
+  line-height: 1.7;
+  color: var(--muted);
+  opacity: 0.85;
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}

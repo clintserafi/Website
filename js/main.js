@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
     "perimenopause-performance-guide": "Perimenopause Performance Guide",
     "postpartum-recovery-guide": "Postpartum Recovery Guide",
     "the-health-guide-over-40": "The Health Guide Over 40",
+    "the-backroads-guide": "The Backroads Guide",
+    "metabolic-medications": "Metabolic Medications",
   };
 
   const contactForm = document.getElementById("contact-form");

@@ -225,6 +225,8 @@ details p{color:var(--parchment-dim); margin-top:14px; font-size:0.96rem; max-wi
 footer{ border-top:1px solid var(--line); padding:36px 0; }
 footer .wrap{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:var(--muted); }
 
+.medical-disclaimer{ font-family:'IBM Plex Mono', monospace; font-size:0.68rem; line-height:1.7; color:var(--muted); opacity:0.85; padding-bottom:18px; margin-bottom:18px; border-bottom:1px solid var(--line); }
+
 .reveal{opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease;}
 .reveal.in{opacity:1; transform:translateY(0);}
 
