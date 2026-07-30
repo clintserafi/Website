@@ -247,9 +247,15 @@
     .oversight .wrap{flex-direction:column; align-items:flex-start;}
   }
 
+  .bg-parallax{
+    position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background-image:url('../images/pattern-hex-gold.svg');
+    background-repeat:repeat; background-size:240px; opacity:0.05;
+  }
 </style>
 </head>
 <body>
+<div class="bg-parallax" aria-hidden="true"></div>
 
 <nav>
   <div class="wrap">
@@ -359,7 +365,7 @@
           <li>Guidance on when to loop in your athletic trainer or team physician</li>
           <li>A real follow-up plan after any flare-up</li>
         </ul>
-        <a class="btn btn-ghost" href="#">Start Tier 1</a>
+        <a class="btn btn-ghost" href="../contact.html?ref=competitive-athlete-performance-system&amp;tier=1">Start Tier 1</a>
       </div>
       <div class="price-card featured reveal">
         <div class="tag">Most Popular</div>
@@ -374,7 +380,7 @@
           <li>Progress check-ins every 4 weeks</li>
           <li>Everything in Tier 1</li>
         </ul>
-        <a class="btn btn-primary" href="#">Start Tier 2</a>
+        <a class="btn btn-primary" href="../contact.html?ref=competitive-athlete-performance-system&amp;tier=2">Start Tier 2</a>
       </div>
       <div class="price-card reveal">
         
@@ -394,7 +400,7 @@
           <li>Extended recovery protocols</li>
           <li>More frequent check-ins during peak season</li>
         </ul>
-        <a class="btn btn-ghost" href="#">Request a Tier 3 Quote</a>
+        <a class="btn btn-ghost" href="../contact.html?ref=competitive-athlete-performance-system&amp;tier=3">Request a Tier 3 Quote</a>
       </div>
     </div>
   </div>
@@ -465,6 +471,7 @@
   <div class="wrap">
     <span>PERFORMANCE COLLECTIVE &middot; COMPETITIVE ATHLETE PERFORMANCE SYSTEM</span>
     <span>performancecollective.co &middot; Life Over 40, Reimagined.</span>
+    <span><a href="../contact.html?ref=competitive-athlete-performance-system">Questions first? Contact us &rarr;</a></span>
   </div>
 </footer>
 

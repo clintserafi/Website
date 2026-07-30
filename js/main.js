@@ -1,4 +1,38 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const doorwayTitles = {
+    "amputee-performance-pathway": "Amputee Performance Pathway",
+    "chronic-pain-care-coordination": "Chronic Pain Care Coordination",
+    "competitive-athlete-performance-system": "Competitive Athlete Performance System",
+    "perimenopause-performance-guide": "Perimenopause Performance Guide",
+    "postpartum-recovery-guide": "Postpartum Recovery Guide",
+    "the-health-guide-over-40": "The Health Guide Over 40",
+  };
+
+  const contactForm = document.getElementById("contact-form");
+  if (contactForm) {
+    const params = new URLSearchParams(window.location.search);
+    const ref = params.get("ref");
+    const tier = params.get("tier");
+
+    if (ref) {
+      const label = doorwayTitles[ref] || ref;
+      const tierSuffix = tier ? ` — Tier ${tier}` : "";
+
+      const sourceField = document.getElementById("source-field");
+      const subjectField = document.getElementById("subject-field");
+      const referralSelect = document.getElementById("referral");
+      const banner = document.getElementById("doorway-banner");
+
+      if (sourceField) sourceField.value = `${label}${tierSuffix}`;
+      if (subjectField) subjectField.value = `New inquiry: ${label}${tierSuffix}`;
+      if (referralSelect) referralSelect.value = "doorway";
+      if (banner) {
+        banner.textContent = `You're inquiring about the ${label}${tierSuffix}. Tell us a bit more below and we'll follow up within one business day.`;
+        banner.style.display = "block";
+      }
+    }
+  }
+
   const toggle = document.querySelector(".nav-toggle");
   const links = document.querySelector(".nav-links");
 
