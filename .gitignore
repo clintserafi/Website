@@ -8,6 +8,7 @@ images/Performance Collective Branding/
 # Blog drafts: source docs, not needed for the deployed site.
 BLOGS/
 *.txt
+!robots.txt
 blog_docs_text.txt
 
 # Raw headshot variants (LinkedIn/PRINT/original WEB): only the cropped
