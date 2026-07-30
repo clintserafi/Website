@@ -602,7 +602,11 @@ a {
 }
 
 .team-bio p {
-  margin: 0;
+  margin: 0 0 12px;
+}
+
+.team-bio p:last-child {
+  margin-bottom: 0;
 }
 
 .team-bio:not(.is-open) {
@@ -611,7 +615,7 @@ a {
 }
 
 .team-bio.is-open {
-  max-height: 200px;
+  max-height: 900px;
 }
 
 @media (max-width: 760px) {
@@ -715,6 +719,61 @@ a {
 
 .form-status[data-state="error"] {
   color: #d9764a;
+}
+
+/* ===== Montage (auto-scrolling photo/video strip) ===== */
+.montage {
+  overflow: hidden;
+  margin-top: 44px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+}
+
+.montage-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: montage-scroll 26s linear infinite;
+}
+
+.montage:hover .montage-track {
+  animation-play-state: paused;
+}
+
+.montage-item {
+  flex: 0 0 auto;
+  width: 220px;
+  height: 380px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--charcoal);
+}
+
+.montage-item video,
+.montage-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@keyframes montage-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (max-width: 760px) {
+  .montage-item {
+    width: 160px;
+    height: 280px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .montage-track {
+    animation: none;
+  }
 }
 
 /* ===== Footer ===== */

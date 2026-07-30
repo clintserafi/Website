@@ -17,3 +17,12 @@ images/Headshot Updated 20241126/*Linkedin.jpg
 images/Headshot Updated 20241126/*PRINT.jpg
 images/Headshot Updated 20241126/*WEB.jpg
 *.heic
+
+# Raw video sources (iPhone .mov): remuxed to web-friendly .mp4 and tracked
+# as images/clint-baseball-*.mp4. The originals aren't needed for the site.
+images/*.mov
+images/*.MP4
+!images/clint-baseball-*.mp4
+
+# Source doc, not needed for the deployed site (content pulled into about.html).
+Website Seed document.docx
