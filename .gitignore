@@ -4,3 +4,15 @@
 # Only the specific files copied out (images/logo-horizontal.png, images/favicon.svg) are tracked.
 images/Logo PERFORMANCE COLLECTIVE/
 images/Performance Collective Branding/
+
+# Blog drafts: source docs, not needed for the deployed site.
+BLOGS/
+*.txt
+blog_docs_text.txt
+
+# Raw headshot variants (LinkedIn/PRINT/original WEB): only the cropped
+# WEB version and the B&W photo used in about.html are tracked.
+images/Headshot Updated 20241126/*Linkedin.jpg
+images/Headshot Updated 20241126/*PRINT.jpg
+images/Headshot Updated 20241126/*WEB.jpg
+*.heic
