@@ -281,7 +281,8 @@ a {
   border: 1px dashed rgba(242,236,220,0.16);
 }
 
-.carousel-slide img {
+.carousel-slide img,
+.carousel-slide video {
   width: 100%;
   height: 100%;
   object-fit: cover;
