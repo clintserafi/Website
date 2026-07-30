@@ -565,6 +565,19 @@ a {
   min-height: 0;
 }
 
+.hero-photo {
+  border-radius: var(--radius);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 /* ===== Team cards ===== */
 .team-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
