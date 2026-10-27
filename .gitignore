@@ -28,3 +28,6 @@ images/*.MP4
 
 # Source doc, not needed for the deployed site (content pulled into about.html).
 Website Seed document.docx
+
+# Source PDF for the peptide guide (third-party branding). The guide is published as Doorways/peptide-guide.html instead.
+Metabolic Support/

@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "the-health-guide-over-40": "The Health Guide Over 40",
     "the-backroads-guide": "The Backroads Guide",
     "metabolic-medications": "Metabolic Medications",
+    "the-metabolic-collective": "The Metabolic Collective",
   };
 
   const contactForm = document.getElementById("contact-form");

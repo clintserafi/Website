@@ -1,81 +1,59 @@
-# Formspree follow-up automation
+# Website lead tracker (Google Sheet)
 
-Automatically create personalized Gmail follow-up drafts from Formspree contact submissions, directly from your Gmail inbox.
+Every form on the site (contact page, The Metabolic Collective, and any future form marked `data-lead-form`) posts to a Google Apps Script web app. For each submission it:
 
-## Quick Setup
+- adds a row to the **Leads** tab of your Google Sheet
+- emails a notification to `hello@performancecollective.co` (hit Reply to answer the lead directly)
+- creates a personalized Gmail follow-up draft with your booking link. Metabolic Collective leads also get their peptide guide link.
 
-### Step 1: Create a Gmail label
-1. Go to your Gmail inbox
-2. Create a new label called **"Formspree"**
-3. Set up a Gmail filter: from:`noreply@formspree.io` → Apply label "Formspree"
+This replaces Formspree. No third-party form service is involved.
 
-### Step 2: Create a Google Sheet
-Create a new Google Sheet with these column headers in row 1:
-- `name`
-- `email`
-- `phone`
-- `referral`
-- `message`
-- `draft_created`
+## One-time setup (about 10 minutes)
 
-### Step 3: Set up Apps Script
-1. Open your Google Sheet
-2. Click **Extensions → Apps Script**
-3. Delete any existing code
-4. Paste the code from [gmail-formspree-automation.gs](gmail-formspree-automation.gs)
-5. Click **Save** (project name can stay as "Untitled project")
+### 1. Create the sheet and paste the script
+1. Go to [sheets.new](https://sheets.new) while signed in to the Google account that should own the leads. Name it something like **Performance Collective Leads**.
+2. Click **Extensions → Apps Script**.
+3. Delete the starter code, paste in all of [leads-to-sheet.gs](leads-to-sheet.gs), and click **Save**.
 
-### Step 4: Add a time-based trigger
-1. In Apps Script, click the **Triggers** icon (⏰) on the left
-2. Click **Create new trigger**
-3. Configure:
-   - **Function:** `processFormspreeEmails`
-   - **Deployment:** Head deployment
-   - **Event source:** Time-driven
-   - **Type of time interval:** Minutes
-   - **Interval:** Every 5 minutes
-4. Click **Save**
+### 2. Build the tabs
+1. In the Apps Script toolbar, choose the `setup` function and click **Run**.
+2. Approve the permissions prompt. It asks for access to the sheet, sending email, and creating Gmail drafts. If Google shows "unverified app", choose **Advanced → Go to (project)**: it's your own script.
+3. Back in the sheet you'll now have a **Leads** tab (with a Status dropdown) and a **Summary** tab.
 
-### Step 5: Test it
-1. From your Google Sheet, click **Performance Collective → Process Formspree emails now**
-2. Fill out your contact form at performancecollective.co/contact.html
-3. Watch the script automatically:
-   - Pull name, email, phone, referral, and message from the Formspree email
-   - Add the row to your Google Sheet
-   - Create a personalized Gmail draft
+### 3. Deploy it as a web app
+1. In Apps Script, click **Deploy → New deployment**.
+2. Click the gear icon and choose **Web app**.
+3. Set **Execute as: Me** and **Who has access: Anyone**. ("Anyone" is what lets website visitors submit. They can't read the sheet.)
+4. Click **Deploy** and copy the **Web app URL** (it ends in `/exec`).
+5. Open that URL in your browser. You should see "Performance Collective lead endpoint is running."
 
-## How it works
+### 4. Connect the website
+In [`js/leads.js`](../js/leads.js), replace `PASTE_APPS_SCRIPT_WEB_APP_URL_HERE` with the web app URL, then commit and push.
 
-- **Every 5 minutes**, the script checks your Gmail inbox for new unread emails from Formspree
-- **Extracts** name, email, phone, referral, and message from the email
-- **Logs each entry** to your Google Sheet for record-keeping
-- **Creates a Gmail draft** with your personalized follow-up message
-- **Marks the email as read** so it's not processed again
+### 5. Test it
+Submit the contact form and The Metabolic Collective form once each. Check for a new row in **Leads**, a notification email, and a draft in Gmail.
 
-## Follow-up email template
+## Working your leads
 
-```
-Hey [name]!
+| Column | Filled by | Use |
+|---|---|---|
+| Timestamp → UTM Campaign | Website | Who they are, what they asked, which page and campaign they came from |
+| Status | You | New → Contacted → Consult Booked → Client / Not a Fit |
+| Follow-up Draft | Script | "Drafted" once the Gmail draft exists |
+| Next Follow-up | You | A date. The Summary tab counts follow-ups that are due |
+| Notes | You | Anything else |
 
-Thanks for reaching out to us about "[message]". We'd love to help you take the next step.
+**Summary tab:** leads in the last 7 and 30 days, uncontacted leads, follow-ups due, and lead counts by source and by status.
 
-What is the best time for us to connect via phone or Google Meet?
+**Tracking campaigns:** add UTM tags to links you share and they're recorded automatically, e.g.
+`https://www.performancecollective.co/Doorways/the-metabolic-collective.html?utm_source=instagram&utm_campaign=peptides`
 
-➡️ Click here to schedule your Virtual Consultation:
-https://calendar.app.google/kQQdvzUcjmH3BAAz7
+## Changing things later
 
-Thanks,
-Clint Serafino
-Health Navigator
-Performance Collective
-```
+- **Notification address, booking link, drafts on/off:** edit the constants at the top of `leads-to-sheet.gs`.
+- **After editing the script** you must publish a new version: **Deploy → Manage deployments → ✏️ Edit → Version: New version → Deploy**. The URL stays the same.
+- **If the sheet layout gets messed up:** the sheet menu **Performance Collective → Set up / repair lead sheet** rebuilds the headers and Summary tab without touching existing rows.
 
-## Alternative: Manual processing
+## Gated peptide guide
 
-If you don't want the time-based trigger, you can run the script manually:
-1. Open your Google Sheet
-2. Click **Performance Collective → Process Formspree emails now**
-
-## Older automation file
-
-[follow-up-draft.gs](follow-up-draft.gs) is a simpler version that works with manually-added data. It can be deleted if you're using the Gmail-based automation.
+`Doorways/peptide-guide.html` is hidden from search engines and unlocks after someone submits The Metabolic Collective form. It's a soft gate: it keeps the guide off Google and makes the form the normal way in, but anyone given the direct link with `?access=granted` (the link in the follow-up draft) can open it. Don't put anything on that page that must stay truly confidential.

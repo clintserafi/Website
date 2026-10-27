@@ -430,6 +430,19 @@ a {
   font-size: 0.95rem;
 }
 
+.card-link {
+  display: inline-block;
+  margin-top: 14px;
+  color: var(--gold-bright);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.card-link:hover {
+  text-decoration: underline;
+}
+
 /* ===== Blog ===== */
 .blog-grid {
   display: grid;

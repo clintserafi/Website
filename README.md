@@ -9,14 +9,13 @@ about.html      About
 services.html   Services
 contact.html    Contact form
 css/style.css   Shared styles
-js/main.js      Nav toggle + form submit handling
+js/main.js      Nav toggle, carousel, contact-form prefill
+js/leads.js     Sends every data-lead-form form to the Google Sheet
 images/         Drop real photos here, then swap the .img-placeholder divs for <img> tags
 ```
 
 ## To-do before launch
-- [ ] Sign up at https://formspree.io, create a form, and replace `YOUR_FORM_ID` in `contact.html`'s `<form action="...">` with your real form ID.
-- [ ] In the Formspree form settings, configure email notifications to send to `hello@performancecollective.co`.
-- [ ] Connect the form to Google Sheets or Zapier to capture submissions in a sheet and trigger an email sequence.
+- [ ] Set up the Google Sheet lead tracker and paste its web app URL into `LEADS_ENDPOINT` in `js/leads.js` (see `automation/README.md`). Until then, forms fall back to the old Formspree form (`FALLBACK_ENDPOINT`); remove it once the sheet is live.
 - [ ] Replace `.img-placeholder` divs with real `<img src="images/..." alt="...">` tags.
 - [ ] Swap placeholder About/Services copy for final content.
 - [ ] Update the copyright year/footer if needed.

@@ -52,7 +52,7 @@
 
         <div id="doorway-banner" class="form-note" style="display:none; margin-bottom:24px; padding:14px 18px; border:1px solid var(--line); border-radius:4px; background:rgba(232,196,104,0.06); color:var(--gold-bright);"></div>
 
-        <form id="contact-form" class="form" action="https://formspree.io/f/mbdnwqea" method="POST" accept-charset="UTF-8">
+        <form id="contact-form" class="form" data-lead-form data-success="thank-you.html">
           <div class="form-group">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" required />
@@ -81,13 +81,12 @@
             <textarea id="message" name="message" rows="6" required></textarea>
           </div>
           <input type="hidden" name="_subject" id="subject-field" value="New Performance Collective inquiry" />
-          <input type="hidden" name="_next" value="https://www.performancecollective.co/thank-you.html" />
           <input type="hidden" name="source" id="source-field" value="" />
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
           <button type="submit" class="btn btn-primary">Send Message</button>
           <p id="form-status" class="form-status" role="status"></p>
           <p class="form-note">
-            Submissions are delivered by Formspree directly to our inbox — no data is stored on this site. If you prefer, email us at <a href="mailto:hello@performancecollective.co">hello@performancecollective.co</a>.
+            Your information goes straight to our team and is never sold or shared. If you prefer, email us at <a href="mailto:hello@performancecollective.co">hello@performancecollective.co</a>.
           </p>
           <p class="form-note" style="margin-top: 8px;">
             By submitting, you agree to our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms of Service</a>.
@@ -112,5 +111,6 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/leads.js"></script>
 </body>
 </html>

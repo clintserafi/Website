@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Your Guide to Peptides | The Metabolic Collective</title>
+<meta name="robots" content="noindex, nofollow" />
+<script>
+  // Soft gate: the guide opens after the Metabolic Collective form is submitted
+  // (leads.js sets the flag) or from the ?access=granted link in follow-up emails.
+  (function () {
+    var granted = /[?&]access=granted\b/.test(location.search);
+    try {
+      if (granted) localStorage.setItem("mc_guide_unlocked", "1");
+      if (!granted && !localStorage.getItem("mc_guide_unlocked")) {
+        location.replace("the-metabolic-collective.html#inquire");
+      }
+    } catch (e) {}
+  })();
+</script>
+<link rel="icon" type="image/svg+xml" href="../images/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/doorway.css" />
+<style>
+  /* Guide-specific layout. Prints cleanly via the "Save as PDF" button. */
+  .guide{ max-width:860px; margin:0 auto; padding:0 32px; }
+  .cover{ padding:96px 0 64px; border-bottom:1px solid var(--line); }
+  .cover .meta{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:40px; }
+  .cover .meta span{ font-family:'IBM Plex Mono', monospace; font-size:0.68rem; letter-spacing:0.1em; border:1px solid var(--line); color:var(--muted); padding:5px 10px; }
+  .cover h1{ font-size:clamp(2.6rem, 6vw, 4.2rem); line-height:1.04; margin:14px 0 20px; }
+  .cover h1 em{ font-style:italic; color:var(--gold-bright); }
+  .cover .sub{ font-size:1.15rem; color:var(--parchment-dim); max-width:44ch; }
+  .cover .by{ margin-top:40px; font-family:'IBM Plex Mono', monospace; font-size:0.76rem; color:var(--muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+  .cover .by strong{ color:var(--gold-bright); font-weight:500; }
+  .print-btn{ margin-top:32px; cursor:pointer; border:none; }
+
+  .chapter{ padding:72px 0; border-bottom:1px solid var(--line); }
+  .chapter h2{ font-size:clamp(1.8rem, 3.4vw, 2.5rem); line-height:1.15; margin:12px 0 22px; }
+  .chapter h3{ font-size:1.12rem; margin-bottom:8px; }
+  .chapter p{ color:var(--parchment-dim); margin-bottom:16px; font-size:1.02rem; line-height:1.7; }
+  .chapter p.kicker{ font-family:'Fraunces', serif; font-size:1.2rem; color:var(--parchment); }
+  .chapter ul.plain{ list-style:none; margin:8px 0 22px; }
+  .chapter ul.plain li{ padding:10px 0 10px 22px; border-top:1px solid var(--line); color:var(--parchment-dim); position:relative; }
+  .chapter ul.plain li::before{ content:"\2014"; position:absolute; left:0; color:var(--teal-bright); }
+  .chip-row{ display:flex; gap:8px; flex-wrap:wrap; margin:10px 0 26px; }
+  .chip-row span{ font-size:0.85rem; border:1px solid var(--teal-bright); color:var(--teal-bright); padding:5px 12px; }
+
+  .box{ background:var(--charcoal); border-left:3px solid var(--gold); padding:24px 28px; margin:28px 0 8px; }
+  .box .label{ font-family:'IBM Plex Mono', monospace; font-size:0.7rem; letter-spacing:0.12em; color:var(--gold-bright); margin-bottom:10px; }
+  .box strong{ display:block; font-family:'Fraunces', serif; font-weight:500; font-size:1.15rem; color:var(--parchment); margin-bottom:8px; }
+  .box p{ margin-bottom:0; font-size:0.96rem; }
+
+  .cols{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin:22px 0; }
+  .cols.two{ grid-template-columns:1fr 1fr; }
+  .cols > div{ background:var(--charcoal); padding:24px 22px; }
+  .cols p{ font-size:0.92rem; margin-bottom:8px; }
+  .cols p:last-child{ margin-bottom:0; }
+  .cols .big{ font-family:'Inter', sans-serif; font-size:2rem; font-weight:600; color:var(--gold-bright); line-height:1.1; margin:12px 0 8px; }
+  .cols .rx{ font-family:'IBM Plex Mono', monospace; font-size:0.66rem; letter-spacing:0.08em; color:var(--teal-bright); }
+
+  .ref-wrap{ overflow-x:auto; border:1px solid var(--line); margin:22px 0; }
+  .ref-table{ width:100%; border-collapse:collapse; min-width:560px; }
+  .ref-table th{ text-align:left; font-family:'IBM Plex Mono', monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); font-weight:500; padding:13px 18px; background:var(--charcoal); border-bottom:1px solid var(--line); }
+  .ref-table td{ padding:14px 18px; border-bottom:1px solid var(--line); font-size:0.92rem; color:var(--parchment-dim); vertical-align:top; }
+  .ref-table tr:last-child td{ border-bottom:none; }
+  .ref-table td:first-child{ color:var(--parchment); font-weight:500; }
+
+  .steps-list{ counter-reset:s; list-style:none; margin-top:24px; }
+  .steps-list li{ counter-increment:s; display:grid; grid-template-columns:56px 1fr; gap:8px; padding:22px 0; border-top:1px solid var(--line); }
+  .steps-list li::before{ content:counter(s, decimal-leading-zero); font-family:'Inter', sans-serif; font-size:2rem; color:transparent; -webkit-text-stroke:1px var(--gold); line-height:1; }
+  .steps-list p{ margin-bottom:0; font-size:0.96rem; }
+  .steps-list .eg{ margin-top:10px; font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--gold-bright); }
+
+  .qa{ padding:20px 0; border-top:1px solid var(--line); }
+  .qa h3{ font-family:'Fraunces', serif; font-weight:500; font-size:1.15rem; }
+  .qa p{ margin:8px 0 0; font-size:0.96rem; }
+
+  .questions{ display:grid; grid-template-columns:1fr 1fr; gap:0 36px; list-style:none; margin-top:12px; }
+  .questions li{ display:flex; gap:12px; color:var(--parchment-dim); font-size:0.95rem; padding:12px 0; border-top:1px solid var(--line); }
+  .questions li::before{ content:"?"; font-family:'IBM Plex Mono', monospace; color:var(--gold); flex-shrink:0; }
+
+  .coming{ display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; background:var(--teal); color:var(--ink); padding:28px 30px; margin:28px 0; }
+  .coming .label{ font-family:'IBM Plex Mono', monospace; font-size:0.7rem; letter-spacing:0.12em; }
+  .coming h3{ color:var(--ink); font-size:1.3rem; margin:6px 0; }
+  .coming p{ color:#0E1614; margin:0; font-size:0.94rem; }
+  .coming .price{ text-align:right; font-family:'IBM Plex Mono', monospace; font-size:0.7rem; letter-spacing:0.1em; }
+  .coming .price strong{ display:block; font-family:'Inter', sans-serif; font-size:2.2rem; letter-spacing:0; }
+
+  .refs{ list-style:none; }
+  .refs li{ font-size:0.86rem; color:var(--parchment-dim); padding:10px 0; border-top:1px solid var(--line); }
+  .refs a{ color:var(--teal-bright); text-decoration:underline; word-break:break-word; }
+  .guide-cta{ text-align:center; padding:72px 0 88px; }
+  .guide-cta h2{ font-size:clamp(1.7rem,3vw,2.2rem); margin:12px 0 16px; }
+  .guide-cta p{ color:var(--parchment-dim); max-width:48ch; margin:0 auto 28px; }
+
+  @media (max-width:760px){
+    .guide{ padding:0 16px; }
+    .cols, .cols.two, .questions{ grid-template-columns:1fr; }
+    .coming .price{ text-align:left; }
+  }
+
+  @media print{
+    :root{ --ink:#fff; --charcoal:#F6F3EA; --charcoal-2:#fff; --parchment:#111; --parchment-dim:#333; --muted:#666; --line:#ddd; --gold-bright:#8A6D12; --teal-bright:#1E5C73; }
+    body{ background:#fff !important; color:#111; }
+    nav, .bg-parallax, .print-btn, .guide-cta .cta-row{ display:none !important; }
+    .chapter{ break-inside:auto; padding:36px 0; }
+    .cols, .box, .ref-wrap, .coming, .steps-list li, .qa{ break-inside:avoid; }
+    .coming{ background:#E6F0F3; }
+  }
+</style>
+<script src="../js/analytics.js"></script>
+</head>
+<body>
+<div class="bg-parallax" aria-hidden="true"></div>
+
+<nav>
+  <div class="wrap">
+    <a href="../index.html" class="nav-logo"><img src="../images/logo-horizontal.png" alt="Performance Collective" /></a>
+    <a class="nav-cta" href="the-metabolic-collective.html#inquire">Ask us a question</a>
+  </div>
+</nav>
+
+<main class="guide">
+
+  <header class="cover">
+    <div class="meta"><span>FREE GUIDE</span><span>OCTOBER 2026</span><span>EDUCATIONAL ONLY</span><span>NOT MEDICAL ADVICE</span></div>
+    <div class="eyebrow">The Metabolic Collective</div>
+    <h1>Your Guide <em>to Peptides</em></h1>
+    <p class="sub">Understanding the science, potential benefits &amp; what to know before you begin.</p>
+    <div class="by">
+      <span>PRESENTED BY <strong>PERFORMANCE COLLECTIVE</strong></span>
+      <span>Education first. Informed choices always.</span>
+    </div>
+    <button class="btn btn-primary print-btn" type="button" onclick="window.print()">Save as PDF / Print</button>
+  </header>
+
+  <section class="chapter">
+    <div class="eyebrow">Welcome</div>
+    <h2>Welcome to The Metabolic Collective. Let's talk about peptides.</h2>
+    <p>There's a lot of conversation surrounding peptides right now. Some of it is grounded in legitimate science. Some of it is promising but preliminary. And some of it is getting ahead of the research.</p>
+    <p>If you've been curious about peptides but feel overwhelmed by conflicting information, you're in the right place.</p>
+    <ul class="plain">
+      <li>Maybe you're interested in metabolic health or body composition.</li>
+      <li>Maybe you've heard people discussing peptides for recovery, inflammation, hormones, or longevity.</li>
+      <li>Or maybe you're already using a peptide-based medication and simply want to understand more about what it does.</li>
+    </ul>
+    <p>Whatever brought you here, our goal is the same: to help you understand the science, recognize the limitations, and make more informed decisions about your health.</p>
+    <div class="box">
+      <p>We believe in strength training, adequate nutrition, movement, and recovery. We also recognize that appropriately prescribed medications can be valuable tools.</p>
+      <strong style="margin:10px 0 0;">Those things don't have to compete.</strong>
+    </div>
+    <p style="margin-top:22px;">This guide isn't about convincing you to use peptides. It's about helping you understand what you're hearing, what the research actually shows, and which questions are worth asking.</p>
+  </section>
+
+  <section class="chapter">
+    <div class="eyebrow">Peptides 101</div>
+    <h2>What exactly are peptides?</h2>
+    <p>Peptides are chains of amino acids, the same building blocks that make up proteins. Our bodies naturally produce many peptides that help regulate important biological processes. Some act as hormones or signaling molecules, helping cells communicate with one another.</p>
+    <p>Researchers have also developed peptide-based medications that target specific receptors and pathways. Depending on the compound, these pathways may be involved in:</p>
+    <div class="chip-row"><span>Appetite and glucose regulation</span><span>Hormonal signaling</span><span>Tissue repair and cellular processes</span><span>Metabolism</span><span>Other physiological functions</span></div>
+    <p class="kicker">But here's something important: not all peptides work the same way, and not all have the same level of scientific evidence.</p>
+    <p>Some peptide-based medications have undergone extensive human clinical trials and received FDA approval for specific conditions. Others remain investigational. And some compounds widely discussed online have very little reliable human safety or effectiveness data.</p>
+    <div class="eyebrow" style="margin-top:28px;">Three terms worth understanding</div>
+    <div class="cols">
+      <div><h3>FDA-approved</h3><p>A specific medication has undergone regulatory review for its approved use.</p></div>
+      <div><h3>Investigational</h3><p>A compound is being studied, but its safety or effectiveness for a proposed use has not been established sufficiently for approval.</p></div>
+      <div><h3>Compounded</h3><p>A medication is specially prepared under applicable pharmacy requirements. Compounded medications are not FDA-approved.</p></div>
+    </div>
+    <p>Understanding these differences is one of the most important parts of making an informed decision.</p>
+  </section>
+
+  <section class="chapter">
+    <div class="eyebrow">A Quick-Reference Guide</div>
+    <h2>The peptides everyone is talking about</h2>
+    <p>You've probably seen some of these names circulating online. Here's a simplified overview of what they're being discussed for, and what the evidence actually supports.</p>
+    <div class="ref-wrap">
+      <table class="ref-table">
+        <thead><tr><th>Compound</th><th>Area of interest</th><th>Evidence snapshot</th></tr></thead>
+        <tbody>
+          <tr><td>Semaglutide</td><td>Weight and metabolic health</td><td>FDA-approved products for specific indications</td></tr>
+          <tr><td>Tirzepatide</td><td>Weight and metabolic health</td><td>FDA-approved products for specific indications</td></tr>
+          <tr><td>Retatrutide</td><td>Metabolism and weight management</td><td>Investigational; human clinical trials</td></tr>
+          <tr><td>BPC-157</td><td>Tissue repair and recovery</td><td>Primarily preclinical evidence</td></tr>
+          <tr><td>TB-500</td><td>Tissue repair</td><td>Very limited direct human evidence</td></tr>
+          <tr><td>GHK-Cu</td><td>Skin and cellular repair</td><td>Limited human topical research; injectable benefits unestablished</td></tr>
+          <tr><td>Sermorelin</td><td>Growth hormone signaling</td><td>Not established for routine anti-aging</td></tr>
+          <tr><td>CJC-1295 / Ipamorelin</td><td>Growth hormone pathways</td><td>Limited clinical evidence for wellness claims</td></tr>
+          <tr><td>MOTS-c</td><td>Metabolism and cellular energy</td><td>Primarily preclinical evidence</td></tr>
+          <tr><td>Bremelanotide (PT-141)</td><td>Sexual desire</td><td>FDA-approved for a specific condition in premenopausal women</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box">
+      <strong>This isn't a ranking or recommendation.</strong>
+      <p>It's a reminder that an interesting biological mechanism is not the same thing as a proven clinical benefit. Before considering any treatment, look beyond the claims and ask what has actually been demonstrated in humans.</p>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="eyebrow">Metabolic Health &amp; Body Composition</div>
+    <h2>Why GLP-1 medications are getting so much attention</h2>
+    <p>GLP-1-based medications have changed the conversation around obesity treatment and metabolic health, and for good reason. Clinical trials have demonstrated substantial average weight reductions with certain medications when used in studied populations. These treatments interact with biological pathways involved in appetite, satiety, and glucose regulation.</p>
+    <div class="cols">
+      <div>
+        <h3>Semaglutide</h3>
+        <div class="rx">ACTIVATES GLP-1 RECEPTORS</div>
+        <div class="big">14.9%</div>
+        <p>Average weight reduction with semaglutide 2.4 mg over 68 weeks in the STEP 1 trial, vs. 2.4% in the placebo group.</p>
+      </div>
+      <div>
+        <h3>Tirzepatide</h3>
+        <div class="rx">ACTIVATES GIP + GLP-1 RECEPTORS</div>
+        <div class="big">15&ndash;20.9%</div>
+        <p>Average weight reductions across studied doses over 72 weeks in the SURMOUNT-1 trial, vs. 3.1% with placebo.</p>
+      </div>
+      <div>
+        <h3>Retatrutide</h3>
+        <div class="rx">TARGETS GIP, GLP-1 + GLUCAGON</div>
+        <div class="big">Investigational</div>
+        <p>A triple-receptor agonist. Clinical research has demonstrated promising weight-loss results, but retatrutide remains investigational as of this guide's October 2026 review.</p>
+      </div>
+    </div>
+    <p>These findings are meaningful. But medications aren't appropriate for everyone, and potential adverse effects, contraindications, and long-term treatment planning matter. <a href="metabolic-medications.html" style="color:var(--gold-bright); text-decoration:underline;">See how each medication works, receptor by receptor.</a></p>
+    <div class="box">
+      <div class="label">WHAT ABOUT MUSCLE LOSS?</div>
+      <p>Significant weight loss can include reductions in both fat mass and lean tissue. That's one reason resistance training and adequate nutrition deserve attention during weight management.</p>
+      <strong style="margin:12px 0 0;">The goal isn't simply to lose weight. It's to improve health while preserving strength and physical function.</strong>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="eyebrow">Beyond Weight Loss</div>
+    <h2>What about recovery, hormones, and longevity?</h2>
+    <p>This is where peptide conversations get especially interesting, and where we need to be particularly careful about separating potential from proof.</p>
+    <div class="cols two">
+      <div>
+        <h3>Recovery and tissue repair</h3>
+        <p>Compounds such as BPC-157 and TB-500 are frequently discussed for tendon, ligament, and soft-tissue recovery.</p>
+        <p>But much of the research is preclinical, and reliable human evidence is limited. These compounds have not been established as safe and effective treatments for routine musculoskeletal injuries.</p>
+      </div>
+      <div>
+        <h3>Growth hormone pathways</h3>
+        <p>Sermorelin, CJC-1295, and ipamorelin influence pathways related to growth hormone signaling.</p>
+        <p>However, increasing growth hormone levels does not automatically mean improving strength, recovery, or healthy aging. The evidence does not support treating these compounds as proven general anti-aging solutions.</p>
+      </div>
+      <div>
+        <h3>Women's hormonal health</h3>
+        <p>Peptides such as kisspeptin are being investigated for reproductive hormone signaling.</p>
+        <p>Bremelanotide has an FDA-approved indication for acquired, generalized hypoactive sexual desire disorder in premenopausal women. But peptides are not interchangeable with evidence-based menopause treatments.</p>
+      </div>
+      <div>
+        <h3>Energy and longevity</h3>
+        <p>MOTS-c and humanin have attracted interest because of their roles in mitochondrial biology. Most proposed wellness and longevity benefits remain unproven in humans.</p>
+        <p>Elamipretide has a specific FDA-approved rare-disease indication, not a general anti-aging indication.</p>
+      </div>
+    </div>
+    <div class="box">
+      <div class="label">THE BIGGER PICTURE</div>
+      <strong>Emerging research can be exciting. But promising doesn't mean proven, and natural doesn't automatically mean safe.</strong>
+      <p>You can be curious about what's next without treating every new compound as an established therapy.</p>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="eyebrow">Safety, Quality &amp; Access</div>
+    <h2>Before you consider a peptide, know what you're getting.</h2>
+    <p>This may be the most important part of the guide, because the compound itself is only part of the conversation. Where a product comes from, how it's manufactured, and whether its use is medically appropriate all matter.</p>
+    <div class="eyebrow" style="margin-top:12px;">FDA-approved vs. compounded vs. research-only</div>
+    <div class="cols">
+      <div><h3>FDA-approved</h3><p>Has undergone regulatory review for specific indications.</p></div>
+      <div><h3>Compounded</h3><p>Can serve legitimate medical needs, but not FDA-approved and subject to specific legal and quality requirements.</p></div>
+      <div><h3>Research-use-only</h3><p>Not automatically suitable for human use, even when sold with claims about purity.</p></div>
+    </div>
+    <p>Not FDA-approved doesn't mean unsafe, and FDA-approved doesn't mean risk-free. What matters is the evidence, the source, and qualified oversight.</p>
+    <h3 style="margin-top:30px;">What about certificates of analysis?</h3>
+    <p>A certificate of analysis, or COA, may provide information about chemical identity, purity, or other tests. But a high purity percentage does not establish that an injectable product is sterile, free from harmful endotoxins, appropriately manufactured, or safe for human administration.</p>
+    <p class="kicker">Purity isn't the same as sterility. And neither one proves clinical effectiveness.</p>
+    <div class="eyebrow" style="margin-top:28px;">Questions worth asking</div>
+    <ul class="questions">
+      <li>Is this medication FDA-approved for the proposed use?</li>
+      <li>What human research supports it?</li>
+      <li>What are the known risks and unknowns?</li>
+      <li>Where will the medication be dispensed?</li>
+      <li>What medical evaluation and monitoring are appropriate?</li>
+      <li>What evidence-based alternatives are available?</li>
+    </ul>
+    <p style="margin-top:24px;">Be cautious of anyone promising dramatic results without meaningful risks or limitations. And remember: access to a product isn't proof that it's appropriate for you.</p>
+  </section>
+
+  <section class="chapter">
+    <div class="eyebrow">Protecting Muscle: Our Favorite Part</div>
+    <h2>Because the number on the scale isn't the whole story.</h2>
+    <p>Let's talk about something we believe deserves more attention in conversations about metabolic health: muscle. Muscle matters for much more than appearance. It supports strength, mobility, glucose regulation, and physical independence. And when someone is losing a significant amount of weight, preserving muscle and physical function should be part of the conversation.</p>
+    <ol class="steps-list">
+      <li><div><h3>Prioritize resistance training.</h3><p>For general health, aim to include muscle-strengthening activities at least twice per week. A well-designed program can be adjusted to your experience, abilities, and schedule. Consistency and appropriate progression matter more than chasing exhausting workouts.</p></div></li>
+      <li><div><h3>Eat adequate protein.</h3><p>Protein provides amino acids needed for muscle maintenance and repair. Many active adults may benefit from approximately 1.2 to 1.6 grams of protein per kilogram of body weight daily, although individual needs vary.</p><div class="eg">82&ndash;109 g per day for a 150-pound adult. A general educational example, not a prescription.</div></div></li>
+      <li><div><h3>Keep moving.</h3><p>Walking, running, cycling, and other forms of aerobic activity support cardiovascular health. You don't have to choose between lifting weights and doing cardio.</p></div></li>
+    </ol>
+  </section>
+
+  <section class="chapter">
+    <div class="eyebrow">Your Questions, Answered</div>
+    <h2>Five things we want you to know</h2>
+    <div class="qa"><h3>Are peptides safe?</h3><p>Safety depends on the specific compound, formulation, medical indication, and individual. Some peptide-based medications have substantial human clinical evidence. Others have major safety-data gaps.</p></div>
+    <div class="qa"><h3>Do peptides replace healthy habits?</h3><p>No. Medications may provide benefits that lifestyle changes alone don't fully replicate, but they don't replace the value of strength training, nutrition, movement, or recovery.</p></div>
+    <div class="qa"><h3>Can peptides help with perimenopause?</h3><p>Some peptides influence hormonal signaling, but investigational peptides have not been established as general treatments for menopausal symptoms. Evidence-based menopause care remains important.</p></div>
+    <div class="qa"><h3>Will I regain weight if I stop a GLP-1 medication?</h3><p>Weight regain is common after discontinuing certain GLP-1-based weight-management treatments, although individual experiences vary. Discuss a long-term treatment plan with your clinician.</p></div>
+    <div class="qa"><h3>How do I know what information to trust?</h3><p>Look for human clinical research, current regulatory information, transparent discussion of risks, and qualified medical guidance. Be cautious when marketing promises more than the evidence supports.</p></div>
+    <div class="box">
+      <div class="label">ONE LAST REMINDER</div>
+      <strong>You don't need to know everything about every peptide.</strong>
+      <p>You need to understand enough to ask informed questions and recognize when more evidence is needed.</p>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="eyebrow">Keep Learning with The Metabolic Collective</div>
+    <h2>For a deeper understanding of peptide science.</h2>
+    <p>We're creating <em>The Metabolic Collective: The Complete Peptide Guide</em>, a comprehensive educational resource that will go beyond the basics to explore:</p>
+    <div class="cols two">
+      <div><p>Individual peptide profiles and mechanisms</p><p>Metabolic health and body composition</p><p>Growth hormone pathways</p><p>Mitochondrial health and longevity</p><p>Strength training, protein, and muscle preservation</p></div>
+      <div><p>What human research actually shows</p><p>Tissue recovery and inflammation</p><p>Women's hormonal health and midlife</p><p>Safety, regulation, and medication access</p><p>Full research references, an expanded FAQ, and practical checklists</p></div>
+    </div>
+    <p>It's being designed for women who want to go deeper into the science without needing a medical degree to understand it.</p>
+    <div class="coming">
+      <div>
+        <div class="label">THE COMPLETE PEPTIDE GUIDE</div>
+        <h3>Coming soon from The Metabolic Collective.</h3>
+        <p>Watch your inbox. You'll be the first to know when it launches.</p>
+      </div>
+      <div class="price">INTRODUCTORY PRICE<strong>$29</strong></div>
+    </div>
+    <h3 style="margin-top:30px;">More than peptides. A stronger foundation for health.</h3>
+    <p>At Performance Collective, we believe you deserve access to thoughtful education, individualized support, and tools that help you feel strong and capable. Whether you're curious about medical treatment, already working with a licensed provider, or simply interested in better understanding your health, we're glad you're here.</p>
+  </section>
+
+  <section class="chapter">
+    <div class="eyebrow">Selected Research and Trusted Resources</div>
+    <ul class="refs">
+      <li>Wilding et al., 2021. Semaglutide STEP 1 trial. <em>New England Journal of Medicine</em>. <a href="https://doi.org/10.1056/NEJMoa2032183" target="_blank" rel="noopener">DOI: 10.1056/NEJMoa2032183</a></li>
+      <li>Jastreboff et al., 2022. Tirzepatide SURMOUNT-1 trial. <em>New England Journal of Medicine</em>. <a href="https://doi.org/10.1056/NEJMoa2206038" target="_blank" rel="noopener">DOI: 10.1056/NEJMoa2206038</a></li>
+      <li>Jastreboff et al., 2023. Retatrutide phase 2 trial. <em>New England Journal of Medicine</em>. <a href="https://doi.org/10.1056/NEJMoa2301972" target="_blank" rel="noopener">DOI: 10.1056/NEJMoa2301972</a></li>
+      <li>FDA drug approvals: <a href="https://www.accessdata.fda.gov/scripts/cder/daf/" target="_blank" rel="noopener">accessdata.fda.gov/scripts/cder/daf</a></li>
+      <li>FDA human drug compounding: <a href="https://www.fda.gov/drugs/guidance-compliance-regulatory-information/human-drug-compounding" target="_blank" rel="noopener">fda.gov/drugs/&hellip;/human-drug-compounding</a></li>
+      <li>Clinical trials registry: <a href="https://clinicaltrials.gov" target="_blank" rel="noopener">clinicaltrials.gov</a></li>
+    </ul>
+    <p style="margin-top:22px; font-size:0.86rem;"><strong>Educational disclaimer:</strong> This guide provides general information and is not individualized medical advice. Discussion of a compound does not constitute a recommendation for use. Medication approval status, indications, and safety information may change. Consult appropriately licensed healthcare professionals for treatment decisions.</p>
+  </section>
+
+  <section class="guide-cta">
+    <div class="eyebrow">Next Step</div>
+    <h2>Have a question this guide didn't answer?</h2>
+    <p>Reply to our follow-up email or send us a note. We'll help you sort out what makes sense for you.</p>
+    <div class="cta-row" style="justify-content:center;">
+      <a class="btn btn-primary" href="../contact.html?ref=the-metabolic-collective">Contact us</a>
+      <a class="btn btn-ghost" href="the-metabolic-collective.html">Back to The Metabolic Collective</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p class="medical-disclaimer wrap">This is not medical advice. While informed by clinical experience, all recommendations are followed or ignored at your own risk. Seek medical attention from a licensed medical provider. Health navigation is a guide through the healthcare system and does not evaluate, diagnose, treat, or prescribe.</p>
+  <div class="wrap">
+    <span>PERFORMANCE COLLECTIVE &middot; THE METABOLIC COLLECTIVE</span>
+    <span>Education first. Informed choices always.</span>
+  </div>
+</footer>
+
+</body>
+</html>
