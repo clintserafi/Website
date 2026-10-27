@@ -15,7 +15,7 @@ images/         Drop real photos here, then swap the .img-placeholder divs for <
 ```
 
 ## To-do before launch
-- [ ] Set up the Google Sheet lead tracker and paste its web app URL into `LEADS_ENDPOINT` in `js/leads.js` (see `automation/README.md`). Until then, forms fall back to the old Formspree form (`FALLBACK_ENDPOINT`); remove it once the sheet is live.
+- [x] Google Sheet lead tracker connected (`LEADS_ENDPOINT` in `js/leads.js`; setup in `automation/README.md`).
 - [ ] Replace `.img-placeholder` divs with real `<img src="images/..." alt="...">` tags.
 - [ ] Swap placeholder About/Services copy for final content.
 - [ ] Update the copyright year/footer if needed.

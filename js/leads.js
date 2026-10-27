@@ -7,11 +7,7 @@
 //   data-unlock="key"         localStorage flag to set on success (used to unlock gated content)
 
 // Paste the web app URL from Apps Script (Deploy > Manage deployments) here.
-const LEADS_ENDPOINT = "PASTE_APPS_SCRIPT_WEB_APP_URL_HERE";
-
-// Temporary: until LEADS_ENDPOINT is set, submissions still go to the old Formspree
-// form so the live site keeps working. Delete this once the Google Sheet is live.
-const FALLBACK_ENDPOINT = "https://formspree.io/f/mbdnwqea";
+const LEADS_ENDPOINT = "https://script.google.com/macros/s/AKfycbyqPlt_t8RmqxJ7eLw1KkAq9EmaRsKEyB5aHJ-UiPfHhnLGQqlAdATiaw8WqlXvz9jl/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("form[data-lead-form]").forEach((form) => {
@@ -26,8 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
       if (form.dataset.sending) return;
 
-      const endpoint = LEADS_ENDPOINT.startsWith("https://") ? LEADS_ENDPOINT : FALLBACK_ENDPOINT;
-
       const data = new URLSearchParams(new FormData(form));
       const params = new URLSearchParams(window.location.search);
       ["utm_source", "utm_medium", "utm_campaign", "tier"].forEach((key) => {
@@ -41,11 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setStatus("Sending…");
 
       try {
-        const response = await fetch(endpoint, {
-          method: "POST",
-          body: data,
-          headers: { Accept: "application/json" },
-        });
+        const response = await fetch(LEADS_ENDPOINT, { method: "POST", body: data });
         const result = await response.json();
         if (!result.ok) throw new Error(result.error || "Submission failed");
 
